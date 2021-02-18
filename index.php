@@ -61,7 +61,7 @@
 
 
     	$.ajax({
-			url     : "src/consume.php",
+			url     : "consume.php",
 			type    : "get",
 			dataType : "json",
 			success : (function (data) {
