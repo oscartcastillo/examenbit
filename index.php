@@ -12,19 +12,32 @@
 <body>
 
 
-	<h1>Cambio de Bit</h1>
+	
 
-
-
-	<h4>BTC</h4>
-
-
-	<h5>Precio <span class="btc"></span> <span class="btc_new" style="display: none;"></span> </h5>
-	<h4>USD</h4>
-	<h5>Precio <span class="usd"></span> <span class="usd_new" style="display: none;"></span></h5>
-	<h4>EUR</h4>
-	<h5>Precio <span class="eur"></span> <span class="eur_new" style="display: none;"></span></h5>
-
+	<div class="container">
+		<h1>Cambio de Bit</h1>
+		<h1 class="text-center font-weight-bold">Ultimos 10 movimientos de Precio</h1>
+		<div class="row">
+			<div  class="col-md-4">
+				<h4>BTC</h4>
+				<div id="btc">
+					<h5>Precio <span class="btc"></span> <span class="btc_new"></span> </h5>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>USD</h4>
+				<div id="usd">
+					<h5>Precio <span class="usd"></span> <span class="usd_new"></span></h5>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h4>EUR</h4>
+				<div id="eur">
+					<h5>Precio <span class="eur"></span> <span class="eur_new"></span></h5>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
@@ -39,7 +52,7 @@
 
 	function inicio(){
 		$.ajax({
-			url     : "src/consume.php",
+			url     : "consume.php",
 			type    : "get",
 			dataType : "json",
 			success : (function (data) {
@@ -56,21 +69,21 @@
 
 
     	$.ajax({
-			url     : "src/consume.php",
+			url     : "consume.php",
 			type    : "get",
 			dataType : "json",
 			success : (function (data) {
-				//console.log(data);
-					
+	
+				
 				$('.btc_new').text(data.BTC);
 				$('.usd_new').text(data.USD);
 				$('.eur_new').text(data.EUR);
-				
 
+				
 				if (parseFloat($('.btc').text()) == parseFloat($('.btc_new').text())) {
 					$(".btc").css('color', 'black');
 				}
-				else if(parseFloat($('.btc').text()) < parseFloat($('.btc_new').text())){
+				else if(parseFloat($('.btc').text()) > parseFloat($('.btc_new').text())){
 					$(".btc").css('color', 'green');
 				}
 				else{
@@ -81,7 +94,7 @@
 				if (parseFloat($('.usd').text()) == parseFloat($('.usd_new').text())) {
 					$(".usd").css('color', 'black');
 				}
-				else if(parseFloat($('.usd').text()) < parseFloat($('.usd_new').text())){
+				else if(parseFloat($('.usd').text()) > parseFloat($('.usd_new').text())){
 					$(".usd").css('color', 'green');
 				}
 				else{
@@ -91,7 +104,7 @@
 				if (parseFloat($('.eur').text()) == parseFloat($('.eur_new').text())) {
 					$(".eur").css('color', 'black');
 				}
-				else if(parseFloat($('.eur').text()) < parseFloat($('.eur_new').text())){
+				else if(parseFloat($('.eur').text()) > parseFloat($('.eur_new').text())){
 					$(".eur").css('color', 'green');
 				}
 				else{
